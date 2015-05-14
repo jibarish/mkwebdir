@@ -1,0 +1,45 @@
+#!/bin/bash
+
+DIRNAME=$1
+SITENAME=$2
+
+# make directories
+mkdir $DIRNAME
+cd $DIRNAME
+mkdir css
+mkdir js
+
+# ----------
+# make files
+# ----------
+
+# index.html
+echo "<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=\"utf-8\" />
+  <title>$SITENAME</title>
+  <link rel=\"stylesheet\" href=\"css/styles.css\" />
+  <script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>
+  <script type=\"text/javascript\" src=\"js/script.js\"></script>
+</head>
+<body>
+  <h1>$SITENAME</h1>
+</body>
+</html>" > index.html
+
+# script.js
+echo "var init = function() {
+	// do something
+};
+
+\$(document).ready(init);" > js/script.js
+
+# styles.css
+echo "body {
+  background: #000;
+  color: #FFF;
+}" > css/styles.css
+
+# open in browser
+~/bin/chrome index.html
